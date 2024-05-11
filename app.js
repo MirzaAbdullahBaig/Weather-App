@@ -11,3 +11,11 @@ async function fetchWeatherData() {
 }
 
 fetchWeatherData();
+
+const cityElement = document.querySelector(".city");
+const date = document.querySelector(".date");
+const descriptionText = document.querySelector(".description-text");
+const temperature = document.querySelector(".temp");
+const wind_speed = document.querySelector(".wind-speed");
+const humidity = document.querySelector(".humidity");
+const visibility_distance = document.querySelector(".visibility-distance");
