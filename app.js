@@ -21,19 +21,23 @@ async function fetchWeatherData(city) {
         }
 
         const data = await response.json();
-        const weatherIConName = getWeatherIconName(data.weather[0].mian)
-
-        cityElement.textContent = data.name;
-        date.textContent = current_date.toDateString();
-        descriptionIcon.innerHTML = `<i class="material-icons">${weatherIConName}</i>`
-        descriptionText.textContent = data.weather[0].description;
-        temperature.textContent = `${Math.round(data.main.temp)}°`;
-        wind_speed.textContent = `${data.wind.speed} KM/H`;
-        humidity.textContent = `${data.main.humidity} %`;
-        visibility_distance.textContent = `${data.visibility / 1000} KM/H`;
+        updateWeatherUI(data);
     } catch (error) {
         console.error(error);
     }
+}
+
+function updateWeatherUI(data) {
+    const weatherIconName = getWeatherIconName(data.weather[0].mian);
+
+    cityElement.textContent = data.name;
+    date.textContent = current_date.toDateString();
+    descriptionIcon.innerHTML = `<i class="material-icons">${weatherIconName}</i>`
+    descriptionText.textContent = data.weather[0].description;
+    temperature.textContent = `${Math.round(data.main.temp)}°`;
+    wind_speed.textContent = `${data.wind.speed} KM/H`;
+    humidity.textContent = `${data.main.humidity} %`;
+    visibility_distance.textContent = `${data.visibility / 1000} KM/H`;
 }
 
 formElement.addEventListener("submit", function (e) {
@@ -59,5 +63,5 @@ function getWeatherIconName(weatherCondition) {
         Haze: "cloud",
         Fog: "cloud",
     };
-    return iconMap[weatherCondition] || "help"
+    return iconMap[weatherCondition] || "help";
 }
