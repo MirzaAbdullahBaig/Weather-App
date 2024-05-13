@@ -1,10 +1,10 @@
 const apiKey = `271ae9131cee8a60801a1edba4bc429d`;
-const current_date = new Date();
+const date = document.querySelector(".date").textContent = new Date().toDateString();
+
 const formElement = document.querySelector(".search-form");
 const city_input = document.querySelector(".city-input");
 
 const cityElement = document.querySelector(".city");
-const date = document.querySelector(".date");
 const descriptionIcon = document.querySelector(".description i");
 const descriptionText = document.querySelector(".description-text");
 const temperature = document.querySelector(".temp");
@@ -31,7 +31,6 @@ function updateWeatherUI(data) {
     const weatherIconName = getWeatherIconName(data.weather[0].main);
 
     cityElement.textContent = data.name;
-    date.textContent = current_date.toDateString();
     descriptionIcon.innerHTML = `<i class="material-icons">${weatherIconName}</i>`
     descriptionText.textContent = data.weather[0].description;
     temperature.textContent = `${Math.round(data.main.temp)}°`;
