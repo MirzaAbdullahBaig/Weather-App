@@ -28,7 +28,7 @@ async function fetchWeatherData(city) {
 }
 
 function updateWeatherUI(data) {
-    const weatherIconName = getWeatherIconName(data.weather[0].mian);
+    const weatherIconName = getWeatherIconName(data.weather[0].main);
 
     cityElement.textContent = data.name;
     date.textContent = current_date.toDateString();
